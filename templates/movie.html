@@ -68,7 +68,7 @@
 
       #movie-image {
         display: block;
-        max-width: 100%;
+        max-width: 20%;
         margin: 20px auto;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -114,11 +114,16 @@
         <p><strong>Actors:</strong> <span id="movie-actors"></span></p>
         <p><strong>Price per day:</strong> £<span id="movie-price"></span></p>
         <p id="movie-description"></p>
+        <div>
+          <label for="days-to-rent-1">Days to rent:</label><br />
+          <input id="days-to-rent-1" type="number" value="3" min="1" onkeydown="return false" /><br />
+          <button onclick="addToBasket(movieId)">Add to Basket</button>
+        </div>
       </article>
 
       
     </div>
-    <script src="./js/movies.js"></script>
+    <script src="/js/movies.js"></script>
     <script>
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
@@ -133,6 +138,7 @@
       document.getElementById("movie-description").textContent = movie.description;
       document.getElementById("movie-release-date").textContent = movie.releaseDate;
       document.getElementById("movie-price").textContent = movie.price.toFixed(2);
+      
     </script>
      <nav>
       <a href="/templates/basket.html">View Basket</a>

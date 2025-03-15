@@ -228,7 +228,8 @@
    
   <header>
     <img src="/static/images/Movielogo.png" class="MovieLogo"/>
-    <div class="cart"><a href="/templates/basket.html"><strong  id="basket_count"><img src="/static/images/pngwing.png"> 0</strong></a><select id="show_basket" onclick="contents()"></select></div>
+    <div class="cart">
+      <a href="/templates/basket.html"><strong  id="basket_count"><img src="/static/images/pngwing.png"> 0</strong></a><select id="show_basket" onclick="contents()"></select></div>
     
   </header>
  
@@ -246,9 +247,8 @@
         <li>Action</li>
       </ul>
       
-      <button class="exit" id = empty onclick="zero_basket()">Empty Basket</button>
-      <a id="exiting" href="/"><strong>Exit</strong></a>
-      
+      <button class="empty" id = empty onclick="localStorage.setItem('basket', '[]')">Empty Basket</button>
+      <a id="exit" ref="/templates/login.html"><strong>Exit</strong></a>
     </nav>
 
     <article>
@@ -353,11 +353,13 @@
 
       // Get the basket from local storage, or just an empty array if it doesn't exist
       const basket = JSON.parse(localStorage.getItem("basket") ?? "[]");
+
       const existingMovie = basket.find((item) => item.id === movieId);
       if (existingMovie) {
     // If the movie exists, update its rentDays
           existingMovie.rentDays = parseInt(document.getElementById("days-to-rent-" + movieId).value);
         } 
+        
       else {
     // If the movie doesn't exist, add it to the basket
         movie.rentDays = parseInt(document.getElementById("days-to-rent-" + movieId).value);
@@ -388,11 +390,7 @@
       select.insertBefore(new Option("Total: £" +total, "dfsadsdad"),select.firstChild);
 
     }
-    function zero_basket(){
-      count = 0;
-      localStorage.setItem('basket', '[]');
-      set_basket_num(count);
-    }
+   
     function set_basket_num(num){
       var element = document.getElementById('basket_count');
       element.innerHTML = '<img src="./pngwing.com.png">'+ num

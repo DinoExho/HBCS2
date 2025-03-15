@@ -79,9 +79,6 @@
       height:100%;
       background-color:  #106b96;
       border-color:  #106b96;
-      
-      
-      
     }
 
     .cart {
@@ -144,6 +141,8 @@
     nav a:hover, button:hover {
       background-color: #1868bd;
     }
+
+    
   
     article {
       flex: 1;
@@ -179,19 +178,7 @@
       margin: 0 10px 10px;
       color: #666;
     }
-
-    .movie input {
-      width: 60px;
-      padding: 5px;
-      font-size: 14px;
-      margin: 0 10px 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
     
-    .movie button {
-      align-self: flex-start;
-    }
     #empty{
       color: #333;
       background-color: #ddd;
@@ -212,7 +199,7 @@
 
     .MovieLogo {
         height: 120px;
-        margin-left: 0px;
+        margin-left: 800px;
 
 
     }
@@ -224,9 +211,36 @@
       margin-top: auto;
     }
     
-    #days-to-rent-1, #days-to-rent-2, #days-to-rent-3 ,#days-to-rent-4 ,#days-to-rent-5, #days-to-rent-6, #days-to-rent-7, #days-to-rent-8, #days-to-rent-9, #days-to-rent-10 {
+  .actions {
     caret-color: transparent;
+    margin: 0 10px 10px;
+    margin-top: auto;
   }
+  .actions label {
+      font-weight: bold;
+      font-size: 20px;
+      caret-color: transparent;
+    }
+
+    .actions input {
+      font-size: 15px;
+      max-width: 40px;
+      padding: 5px;
+      border-radius: 5px;
+      caret-color: transparent;
+    }
+
+    .actions button {
+      font-size: 20px;
+      padding: 5px 25px;
+      margin-top: 5px;
+      text-align: center;
+      background-color: #106b96;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
   .addedtobasket {
       display: none;
@@ -271,7 +285,7 @@
       </ul>
       
       <button class="empty" id = "empty" onclick="localStorage.setItem('basket', '[]'); location.reload();">Empty Basket</button>
-      <a id="exit" ref="/templates/login.html"><strong>Exit</strong></a>
+      <a id="exit" ref="/templates/login.html"><strong>Logout</strong></a>
     </nav>
 
     <article>
@@ -282,11 +296,11 @@
           <h4 >Shang-Chi and the Legend of the Ten Rings (2021)</h4>
           <p>Shang-Chi is forced to confront his past after being drawn into the Ten Rings organization.</p>
         </a></div>
-        <div>
-          <label for="days-to-rent-1">Days to rent:</label><br />
+          <div class="actions">
+          <label for="days-to-rent-1">Days to rent:</label>
           <input id="days-to-rent-1" type="number" value="3" min="1" onkeydown="return false" /><br />
           <button onclick="addToBasket(1)">Add to Basket</button>
-        </div>
+      </div>
       </div>
 
       <!-- Movie 2 -->
@@ -296,11 +310,11 @@
           <h4>PAW Patrol: The Movie (2021)</h4>
           <p>Ryder and the PAW Patrol pups are called to Adventure City in order to stop the recently-elected Mayor Humdinger from wreaking havoc.</p>     
         </a></div>
-        <div>
-          <label for="days-to-rent-2">Days to rent:</label><br />
+          <div class="actions">
+          <label for="days-to-rent-2">Days to rent:</label>
           <input id="days-to-rent-2" type="number" value="3" min="1" onkeydown="return false" /><br />
           <button onclick="addToBasket(2)">Add to Basket</button>
-        </div>
+       </div>
       </div>
 
       <!-- Movie 3 -->
@@ -311,8 +325,8 @@
           <h4>Spider-Man 3 (2007)</h4>
           <p>A strange black entity bonds with Peter Parker and causes turmoil as he contends with new villains and revenge.</p>
         </a></div>
-        <div>
-          <label for="days-to-rent-3">Days to rent:</label><br />
+          <div class="actions">
+          <label for="days-to-rent-3">Days to rent:</label>
           <input id="days-to-rent-3" type="number" value="3" min="1" onkeydown="return false"/><br />
           <button onclick="addToBasket(3)">Add to Basket</button>
         </div>
@@ -325,10 +339,11 @@
           <h4>Don't Breathe (2016)</h4>
           <p>A trio of thieves break into the house of a blind man who isn't as helpless as he seems.</p>
         </a></div>
-        <div>
-          <label for="days-to-rent-4">Days to rent:</label><br />
+          <div class="actions">
+          <label for="days-to-rent-4">Days to rent:</label>
           <input id="days-to-rent-4" type="number" value="3" min="1" onkeydown="return false"/><br />
           <button onclick="addToBasket(4)">Add to Basket</button>
+
         </div>
       </div>
 
@@ -339,8 +354,8 @@
           <h4>The Dark Knight (2008)</h4>
           <p>Batman must face one of his greatest psychological and physical tests when the Joker wreaks havoc on Gotham.</p>
         </a></div>
-        <div>
-          <label for="days-to-rent-5">Days to rent:</label><br />
+          <div class="actions">
+          <label for="days-to-rent-5">Days to rent:</label>
           <input id="days-to-rent-5" type="number" value="3" min="1" onkeydown="return false"/><br />
           <button onclick="addToBasket(5)">Add to Basket</button>
         </div>
@@ -353,8 +368,8 @@
           <h4>The Matrix (1999)</h4>
           <p>Neo discovers the shocking truth about the life he knows, which is a deception of an evil cyber-intelligence.</p>
         </a></div>
-        <div>
-          <label for="days-to-rent-6">Days to rent:</label><br />
+          <div class="actions">
+          <label for="days-to-rent-6">Days to rent:</label>
           <input id="days-to-rent-6" type="number" value="3" min="1" onkeydown="return false"/><br />
           <button onclick="addToBasket(6)">Add to Basket</button>
         </div>
@@ -367,8 +382,8 @@
           <h4>Demonic (2021)</h4>
           <p>A young woman unleashes terrifying demons when supernatural forces at the root of a decades-old rift between mother and daughter are ruthlessly revealed.</p>
         </a></div>
-        <div>
-          <label for="days-to-rent-7">Days to rent:</label><br />
+          <div class="actions">
+          <label for="days-to-rent-7">Days to rent:</label>
           <input id="days-to-rent-7" type="number" value="3" min="1" onkeydown="return false"/><br />
           <button onclick="addToBasket(7)">Add to Basket</button>
         </div>
@@ -381,8 +396,8 @@
           <h4>The Power Of The Dog (2021)</h4>
           <p>Charismatic rancher Phil Burbank inspires fear and awe in those around him. When his brother brings home a new wife and her son, Phil torments them until he finds himself exposed to the possibility of love.</p>
         </a></div>
-        <div>
-          <label for="days-to-rent-8">Days to rent:</label><br />
+          <div class="actions">
+          <label for="days-to-rent-8">Days to rent:</label>
           <input id="days-to-rent-8" type="number" value="3" min="1" onkeydown="return false"/><br />
           <button onclick="addToBasket(8)">Add to Basket</button>
         </div>
@@ -395,8 +410,8 @@
           <h4>Spider-Man 2 (2004)</h4>
           <p>Peter Parker is beset with troubles in his failing personal life as he battles a brilliant scientist named Doctor Otto Octavius.</p>
         </a></div>
-        <div>
-          <label for="days-to-rent-9">Days to rent:</label><br />
+        <div class="actions">
+          <label for="days-to-rent-9">Days to rent:</label>
           <input id="days-to-rent-9" type="number" value="3" min="1" onkeydown="return false"/><br />
           <button onclick="addToBasket(9)">Add to Basket</button>
         </div>
@@ -409,8 +424,8 @@
           <h4>Wrath of Man (2021)</h4>
           <p>A mysteriously stoic character is hired as a security guard by a cash truck company responsible for transporting a lot of money around Los Angeles each week.</p>
         </a></div>
-        <div>
-          <label for="days-to-rent-10">Days to rent:</label><br />
+        <div class="actions">
+          <label for="days-to-rent-10">Days to rent:</label>
           <input id="days-to-rent-10" type="number" value="3" min="1" onkeydown="return false"/><br />
           <button onclick="addToBasket(10)">Add to Basket</button>
         </div>

@@ -1,4 +1,3 @@
-
 try {
     $pythonVersion = (Get-Command -ErrorAction Stop python).Version.Major
 

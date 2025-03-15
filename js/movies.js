@@ -26,7 +26,7 @@ const movies = [
     director: "Cal Brunker",
     writer: "Bob Barlen, Cal Brunker, Billy Frolick",
     actors: "Iain Armitage, Will Brisbin, Ron Pardo",
-    description: "Cute dog movie",
+    description: "Ryder and the PAW Patrol pups are called to Adventure City in order to stop the recently-elected Mayor Humdinger from wreaking havoc.",
     releaseDate: "20 Aug 2021",
     image: "/static/images/paw.jpg",
     price: 2.99,
@@ -96,9 +96,9 @@ const movies = [
     writer: "Neill Blomkamp",
     actors: "Andrea Agur, Nathalie Boltt, Terry Chen",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae augue finibus, condimentum urna vel, facilisis dui. Proin est ligula, laoreet sit amet accumsan eget, aliquam ut lectus      ",
+      "A young woman unleashes terrifying demons when supernatural forces at the root of a decades-old rift between mother and daughter are ruthlessly revealed.",
     releaseDate: "20 Aug 2021",
-    image: "/static/images/",
+    image: "/static/images/demonic.png",
     price: 0.49,
   },
   {
@@ -112,7 +112,7 @@ const movies = [
     description:
       "Charismatic rancher Phil Burbank inspires fear and awe in those around him. When his brother brings home a new wife and her son, Phil torments them until he finds himself exposed to the possibility of love.",
     releaseDate: "01 Dec 2021",
-    image: "https://via.placeholder.com/250x250",
+    image: "/static/images/dogpower.png",
     price: 1.79,
   },
   {
@@ -126,7 +126,7 @@ const movies = [
     description:
       "Peter Parker is beset with troubles in his failing personal life as he battles a brilliant scientist named Doctor Otto Octavius.",
     releaseDate: "30 Jun 2004",
-    image: "/static/images/Spiderman.png",
+    image: "/static/images/spiderman2.png",
     price: 2.49,
   },
   {
@@ -137,9 +137,9 @@ const movies = [
     director: "Guy Ritchie",
     writer: "Nicolas Boukhrief, Éric Besnard, Guy Ritchie",
     actors: "Jason Statham, Holt McCallany, Josh Hartnett",
-    description: "New action movie out recently",
+    description: "A mysteriously stoic character is hired as a security guard by a cash truck company responsible for transporting a lot of money around Los Angeles each week.",
     releaseDate: "07 May 2021",
-    image: "https://via.placeholder.com/250x50",
+    image: "/static/images/wrathofman.png",
     price: 0.49,
   },
 ];

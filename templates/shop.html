@@ -109,6 +109,11 @@
       text-align: center;
       cursor: pointer;
     }
+
+    .cart img {
+      height: 30px;
+      margin-right: 10px;
+    }
     
     
     
@@ -219,9 +224,21 @@
       margin-top: auto;
     }
     
-    #days-to-rent-1, #days-to-rent-2, #days-to-rent-3 ,#days-to-rent-4 ,#days-to-rent-5 {
+    #days-to-rent-1, #days-to-rent-2, #days-to-rent-3 ,#days-to-rent-4 ,#days-to-rent-5, #days-to-rent-6, #days-to-rent-7, #days-to-rent-8, #days-to-rent-9, #days-to-rent-10 {
     caret-color: transparent;
   }
+
+  .addedtobasket {
+      display: none;
+      position: fixed;
+      top: 30px;
+      right: 20px;
+      background-color: rgb(92, 92, 92);
+      color: lightgray;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
   </style>
 </head>
 <body>
@@ -229,10 +246,16 @@
   <header>
     <img src="/static/images/Movielogo.png" class="MovieLogo"/>
     <div class="cart">
-      <a href="/templates/basket.html"><strong  id="basket_count"><img src="/static/images/pngwing.png"> 0</strong></a><select id="show_basket" onclick="contents()"></select></div>
-    
+      <a href="/templates/basket.html">
+        <strong id="basket_count">
+          <img src="/static/images/basket.png" alt="Basket Icon"> 0
+        </strong>
+      </a>
+      <select id="show_basket" onclick="contents()"></select>
+    </div>
   </header>
  
+  <div id="addedtobasket" class="addedtobasket"></div>
   <div id="main">
     <nav>
       <strong>Movie Rentals</strong>
@@ -247,7 +270,7 @@
         <li>Action</li>
       </ul>
       
-      <button class="empty" id = empty onclick="localStorage.setItem('basket', '[]')">Empty Basket</button>
+      <button class="empty" id = "empty" onclick="localStorage.setItem('basket', '[]'); location.reload();">Empty Basket</button>
       <a id="exit" ref="/templates/login.html"><strong>Exit</strong></a>
     </nav>
 
@@ -271,7 +294,7 @@
         <img src="/static/images/paw.jpg" alt="PAW Patrol: The Movie"/>
         <div>
           <h4>PAW Patrol: The Movie (2021)</h4>
-          <p>Cute dog movie</p>     
+          <p>Ryder and the PAW Patrol pups are called to Adventure City in order to stop the recently-elected Mayor Humdinger from wreaking havoc.</p>     
         </a></div>
         <div>
           <label for="days-to-rent-2">Days to rent:</label><br />
@@ -336,18 +359,75 @@
           <button onclick="addToBasket(6)">Add to Basket</button>
         </div>
       </div>
+
+      <!-- Movie 7 -->
+      <div class="movie"><a href="/templates/movie.html?id=7" class="link">
+        <img src="/static/images/demonic.png" alt="Demonic" />
+        <div>
+          <h4>Demonic (2021)</h4>
+          <p>A young woman unleashes terrifying demons when supernatural forces at the root of a decades-old rift between mother and daughter are ruthlessly revealed.</p>
+        </a></div>
+        <div>
+          <label for="days-to-rent-7">Days to rent:</label><br />
+          <input id="days-to-rent-7" type="number" value="3" min="1" onkeydown="return false"/><br />
+          <button onclick="addToBasket(7)">Add to Basket</button>
+        </div>
+      </div>
+
+      <!-- Movie 8 -->
+      <div class="movie"><a href="/templates/movie.html?id=8" class="link">
+        <img src="/static/images/dogpower.png" alt="The Power Of The Dog" />
+        <div>
+          <h4>The Power Of The Dog (2021)</h4>
+          <p>Charismatic rancher Phil Burbank inspires fear and awe in those around him. When his brother brings home a new wife and her son, Phil torments them until he finds himself exposed to the possibility of love.</p>
+        </a></div>
+        <div>
+          <label for="days-to-rent-8">Days to rent:</label><br />
+          <input id="days-to-rent-8" type="number" value="3" min="1" onkeydown="return false"/><br />
+          <button onclick="addToBasket(8)">Add to Basket</button>
+        </div>
+      </div>
+
+      <!-- Movie 9 -->
+      <div class="movie"><a href="/templates/movie.html?id=9" class="link">
+        <img src="/static/images/spiderman2.png" alt="Spider-Man 2" />
+        <div>
+          <h4>Spider-Man 2 (2004)</h4>
+          <p>Peter Parker is beset with troubles in his failing personal life as he battles a brilliant scientist named Doctor Otto Octavius.</p>
+        </a></div>
+        <div>
+          <label for="days-to-rent-9">Days to rent:</label><br />
+          <input id="days-to-rent-9" type="number" value="3" min="1" onkeydown="return false"/><br />
+          <button onclick="addToBasket(9)">Add to Basket</button>
+        </div>
+      </div>
+
+      <!-- Movie 10 -->
+      <div class="movie"><a href="/templates/movie.html?id=10" class="link">
+        <img src="/static/images/mat.jpg" alt="Wrath of Man" />
+        <div>
+          <h4>Wrath of Man (2021)</h4>
+          <p>A mysteriously stoic character is hired as a security guard by a cash truck company responsible for transporting a lot of money around Los Angeles each week.</p>
+        </a></div>
+        <div>
+          <label for="days-to-rent-10">Days to rent:</label><br />
+          <input id="days-to-rent-10" type="number" value="3" min="1" onkeydown="return false"/><br />
+          <button onclick="addToBasket(10)">Add to Basket</button>
+        </div>
+      </div>
     </article>
   </div>
 
   <footer>
     <p>© 2024 Movie Rentals. All rights reserved.</p>
   </footer>
-  <script src="./js/movies.js"></script>
+  <script src="/js/movies.js"></script>
   <script>
     count = 0
     function addToBasket(movieId) {
-      // Get the movie from data and add to the basket
-      const movie = movies.find((movie) => movie.id === movieId);
+
+    // Get the movie from data and add to the basket
+    const movie = movies.find((movie) => movie.id === movieId);
       if (!movie) return;
       
 
@@ -357,7 +437,7 @@
       const existingMovie = basket.find((item) => item.id === movieId);
       if (existingMovie) {
     // If the movie exists, update its rentDays
-          existingMovie.rentDays = parseInt(document.getElementById("days-to-rent-" + movieId).value);
+          existingMovie.rentDays += parseInt(document.getElementById("days-to-rent-" + movieId).value);
         } 
         
       else {
@@ -372,34 +452,44 @@
 
   // Update the basket count display
       set_basket_num(count);
+
+      addednotif();
   }
-    function contents(){
-      var total = 0;
-      var basket = JSON.parse(localStorage.getItem("basket") ?? "[]");
-      var select = document.getElementById("show_basket");
-      select.innerHTML = "";
-      count = 0;
-      for (movie in basket){
-        total = total + (basket[movie].price * basket[movie].rentDays)
-        let newOption = new Option(("asdasdas",String(basket[movie].name)+": " + "£"+ (basket[movie].price * basket[movie].rentDays).toFixed(2)));
-        select.appendChild(newOption);
-        count++
 
-      }
-      total = (total *1.2).toFixed(2);
-      select.insertBefore(new Option("Total: £" +total, "dfsadsdad"),select.firstChild);
-
+  function contents() {
+    var total = 0;
+    var basket = JSON.parse(localStorage.getItem("basket") ?? "[]");
+    var select = document.getElementById("show_basket");
+    select.innerHTML = "";
+    count = 0;
+    for (movie in basket) {
+      total = total + (basket[movie].price * basket[movie].rentDays);
+      let newOption = new Option(("asdasdas", String(basket[movie].name) + ": " + "£" + (basket[movie].price * basket[movie].rentDays).toFixed(2)));
+      select.appendChild(newOption);
+      count++;
     }
-   
-    function set_basket_num(num){
-      var element = document.getElementById('basket_count');
-      element.innerHTML = '<img src="./pngwing.com.png">'+ num
+    total = (total * 1.2).toFixed(2);
+    select.insertBefore(new Option("Total: £" + total, "dfsadsdad"), select.firstChild);
+  }
 
+  function set_basket_num(num) {
+    var element = document.getElementById('basket_count');
+    element.innerHTML = '<img src="/static/images/basket.png" alt="Basket Icon">' + num;
+  }
+
+  function addednotif() {
+      var addedtobasket = document.getElementById('addedtobasket');
+      addedtobasket.textContent = "Added To Basket";
+      addedtobasket.style.display = 'block';
+      setTimeout(function() {
+        addedtobasket.style.display = 'none';
+      }, 3000);
     }
-    window.onload = function() {
-      contents()
-      set_basket_num(count);
-    };
+
+  window.onload = function() {
+    contents();
+    set_basket_num(JSON.parse(localStorage.getItem("basket") ?? "[]").length);
+  };
   </script>
 </body>
 </html>

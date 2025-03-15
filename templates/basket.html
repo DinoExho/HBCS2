@@ -173,6 +173,12 @@
       .logo{
        height: 120px;
       }
+
+      .actions .disabled {
+        pointer-events: none;
+        background-color: grey;
+      }
+
     </style>
   </head>
   <body>
@@ -197,8 +203,10 @@
         </div>
         <div class="actions">
           <a href="/templates/shop.html">Continue Shopping</a>
-          <button onclick="localStorage.setItem('basket', '[]'); location.reload();">Clear Basket</button>
-          <a href="/templates/order.html">Go to Payment Details</a>
+
+          <button onclick="localStorage.setItem('basket', '[]'); location.reload();">Empty Basket</button>
+
+          <a href="/templates/order.html" id="payment-details">Go to Payment Details</a>
         </div>
       </div>
     </div>
@@ -225,6 +233,17 @@
       });
 
       document.getElementById("total-price").textContent = (totalPrice * 1.2).toFixed(2);
+    
+      const paymentDetails = document.getElementById("payment-details");
+      if (basket.length === 0) {
+          paymentDetails.classList.add("disabled");
+          paymentDetails.onclick = function(event) {
+            event.preventDefault();
+          };
+        } else {
+          paymentDetails.classList.remove("disabled");
+          paymentDetails.onclick = null;
+        }
     </script>
   </body>
 </html>

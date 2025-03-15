@@ -205,24 +205,25 @@
   </head>
   <body>
     <header>
-      <img src="./Movielogo.png" class="logo">
+      <img src="/static/images/Movielogo.png" class="logo">
     </header>
     <div id="main">
       <h1>Payment Details</h1>
-      <form method="GET" action="/templates/invoice.html" onsubmit="storeData()">
+      <form method="GET" id="order-form" action="/templates/invoice.html" onsubmit="storeData()">
         <div>
           <span>Title:</span>
           <input type="text" id="title" required />
         </div>
         <div>
-          <span>First Name:</span>
-          <input type="text" id="firstName" required />
+          <span>Forename:</span>
+          <input type="text" id="forename" required />
         </div>
         <div>
           <span>Surname:</span>
           <input type="text" id="surname" required />
         </div>
         <hr />
+        <span><h4>Address</h4></span>
         <div>
           <span>Number:</span>
           <input type="text" id="addressNumber" required />
@@ -232,16 +233,16 @@
           <input type="text" id="addressStreet" required />
         </div>
         <div>
+          <span>City:</span>
+          <input type="text" id="addressCity" required />
+        </div>
+        <div>
           <span>Country:</span>
           <input type="text" id="addressCountry" required />
         </div>
         <div>
           <span>Postcode:</span>
           <input type="text" id="addressPostcode" required />
-        </div>
-        <div>
-          <span>City:</span>
-          <input type="text" id="addressCity" required />
         </div>
         <hr />
         <div>
@@ -264,7 +265,7 @@
         </div>
         <div class="actions">
           <button type="button" onclick="window.location.href='/templates/basket.html'">Cancel</button>
-          <button type="submit">Proceed</button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </div>
@@ -273,7 +274,7 @@
       function storeData() {
         const formInputs = [
           "title",
-          "firstName",
+          "forname",
           "surname",
           "addressNumber",
           "addressStreet",
@@ -292,7 +293,6 @@
         formData.card = document.getElementById("cardType").value;
 
         localStorage.setItem("paymentDetails", JSON.stringify(formData));
-
         return false;
       }
     </script>

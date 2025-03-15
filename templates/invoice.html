@@ -164,10 +164,10 @@
     </style>
   </head>
   <body>
-    
     <div id="main">
-      <nav>Movie Rentals Invoice</nav>
-     
+      <nav>
+        <strong>Movie Rentals Invoice</strong>
+      </nav>
       <article>
         <h1>Viewing Invoice for Movie Rental</h1>
         <div id="payment-details">
@@ -183,15 +183,16 @@
             <span id="payment-details-expiryMonth"></span>/<span id="payment-details-expiryYear"></span>
           </p>
           <br />
-          <p>Paid: <span id="total-price"></span></p>
+          <p>Paid <span id="total-price"></span></p>
         </div>
       </article>
-      <a href="/templates/shop.html" class="return-button" action="localStorage.clear();">Return to Main Page</a>
+      <a href="/templates/shop.html" class="return-button" onclick="localStorage.clear();">Return to Main Page</a>
     </div>
-    
+  </body>
 
-    <script>
-          const container = document.getElementById("payment-details");
+  <script src="./js/movies.js"></script>
+  <script>
+    const container = document.getElementById("payment-details");
     const paymentDetails = JSON.parse(localStorage.getItem("paymentDetails"));
 
     const basket = JSON.parse(localStorage.getItem("basket") ?? "[]");
@@ -207,7 +208,7 @@
 
     // Update the DOM with the payment details
     document.getElementById("payment-details-title").textContent = paymentDetails.title;
-    document.getElementById("payment-details-forename").textContent = paymentDetails.firstName;
+    document.getElementById("payment-details-forename").textContent = paymentDetails.forename;
     document.getElementById("payment-details-surname").textContent = paymentDetails.surname;
     document.getElementById("payment-details-addressNumber").textContent = paymentDetails.addressNumber;
     document.getElementById("payment-details-addressStreet").textContent = paymentDetails.addressStreet;
@@ -218,6 +219,5 @@
     document.getElementById("payment-details-expiryYear").textContent = paymentDetails.expiryYear;
     document.getElementById("total-price").textContent = totalPrice;
 
-    </script>
-  </body>
+  </script>
 </html>

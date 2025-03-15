@@ -208,44 +208,36 @@
       <img src="/static/images/Movielogo.png" class="logo">
     </header>
     <div id="main">
-      <h1>Payment Details</h1>
-      <form method="GET" id="order-form" action="/templates/invoice.html" onsubmit="storeData()">
-        <div>
-          <span>Title:</span>
-          <input type="text" id="title" required />
-        </div>
-        <div>
-          <span>Forename:</span>
-          <input type="text" id="forename" required />
-        </div>
-        <div>
-          <span>Surname:</span>
-          <input type="text" id="surname" required />
-        </div>
-        <hr />
-        <span><h4>Address</h4></span>
-        <div>
-          <span>Number:</span>
-          <input type="text" id="addressNumber" required />
-        </div>
-        <div>
-          <span>Street:</span>
-          <input type="text" id="addressStreet" required />
-        </div>
-        <div>
-          <span>City:</span>
-          <input type="text" id="addressCity" required />
-        </div>
-        <div>
-          <span>Country:</span>
-          <input type="text" id="addressCountry" required />
-        </div>
-        <div>
-          <span>Postcode:</span>
-          <input type="text" id="addressPostcode" required />
-        </div>
-        <hr />
-        <div>
+      <article>
+        <h1 style="text-align: centre">Payment Details</h1>
+        <div style="background-color: lightgrey; width: 70%; margin: auto; padding: 2em">
+          <form method="GET" action="/templates/invoice.html" onsubmit="storeData()">
+            <div>
+              <span>Title:</span>
+              <input type="text" id="title" />
+              <span>First Name:</span>
+              <input type="text" id="firstName" />
+              <span>Surname:</span>
+              <input type="text" id="surname" />
+            </div>
+            <hr />
+            <div>
+              <span>Number:</span>
+              <input type="text" id="addressNumber" />
+              <span>Street:</span>
+              <input type="text" id="addressStreet" />
+              <span>Country:</span>
+              <input type="text" id="addressCountry" />
+            </div>
+            <div>
+              <span>Postcode:</span>
+              <input type="text" id="addressPostcode" />
+              <span>City:</span>
+              <input type="text" id="addressCity" />
+            </div>
+            <hr />
+            <div>
+
           <span>Card Type:</span>
           <select id="cardType" name="card" required>
             <option value="visa">Visa</option>
@@ -256,45 +248,35 @@
         </div>
         <div>
           <span>Card Number:</span>
-          <input type="text" id="cardNumber" required />
+          <input type="number" id="cardNumber"/>
+          <span>Expiry Date:</span>
+          <input type="text" id="expiryMonth" />
+          <input type="text" id="expiryYear"/>
         </div>
         <div>
-          <span>Expiry Date:</span>
-          <input type="text" id="expiryMonth" placeholder="MM" required />
-          <input type="text" id="expiryYear" placeholder="YYYY" required />
-        </div>
-        <div class="actions">
-          <button type="button" onclick="window.location.href='/templates/basket.html'">Cancel</button>
-          <button type="submit">Submit</button>
+          <button type="button" onclick="window.location.href='/templates/shop.html'">Cancel</a>
+          <button type="submit">Proceed</button>
         </div>
       </form>
     </div>
+  </article>
+</div>
+</body>
 
-    <script>
-      function storeData() {
-        const formInputs = [
-          "title",
-          "forname",
-          "surname",
-          "addressNumber",
-          "addressStreet",
-          "addressPostcode",
-          "addressCountry",
-          "addressCity",
-          "cardNumber",
-          "expiryMonth",
-          "expiryYear"
-        ];
-        const formData = {};
+<script>
 
-        formInputs.forEach((inputId) => {
-          formData[inputId] = document.getElementById(inputId).value;
-        });
-        formData.card = document.getElementById("cardType").value;
+function storeData() {
+  // Collect all form data for use in the invoice
+  const formInputs = ["title", "forename", "surname", "addressNumber", "addressStreet", "addressPostcode", "addressCountry", "addressCity", "cardNumber", "expiryMonth", "expiryYear"];
+  const formData = {};
+  formInputs.forEach((inputId) => {
+    formData[inputId] = document.getElementById(inputId).value;
+  })
+  formData.card = document.querySelector("input[name=card]:checked").value;
+  
+  localStorage.setItem("paymentDetails", JSON.stringify(formData));
 
-        localStorage.setItem("paymentDetails", JSON.stringify(formData));
-        return false;
-      }
-    </script>
-  </body>
+  return false;
+}
+</script>
 </html>
